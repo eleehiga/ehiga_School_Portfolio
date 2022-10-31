@@ -1,5 +1,6 @@
 # ehiga_School_Portfolio
-Collection of programs I have made during my time at school
+- Collection of programs I have made during my time at school
+- To see my high school robotics work please go to: https://github.com/ewh1901
 
 Folders:
 - CPSC121: Intro to C++ programming

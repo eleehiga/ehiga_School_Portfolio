@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=
+comment0.target=CardDeck()
+comment0.text=\r\n\ Construct\ a\ deck\ of\ 52\ cards\ with\ Aces\ given\ a\ cardRank\ >\ Kings\r\n
+comment1.params=numDecks\ aceHigh
+comment1.target=CardDeck(int,\ boolean)
+comment1.text=\r\n\ Construct\ numDecks\ number\ of\ decks\ of\ 52\ cards.\ \ If\ aceHigh\ is\ true,\ Aces\ will\ be\ given\ a\ cardRank\ of\ 14\ (higher\ than\ Kings\ 13)\ otherwise\ their\ cardRank\ will\ be\ 1.\ \r\n\ \ \ @param\ \ numDecks\ \ \ the\ number\ of\ 52\ card\ decks\ you\ want\ included\ in\ this\ deck\r\n\ \ \ @param\ \ aceHigh\ \ \ \ set\ to\ true\ for\ Aces\ valued\ higher\ than\ Kings\ or\ false\ to\ set\ them\ less\ than\ a\ 2\r\n
+comment2.params=
+comment2.target=void\ showAllCardsSystemOut()
+comment2.text=\r\n\ uses\ System.out\ to\ display\ all\ the\ cards\ in\ the\ deck\r\n
+comment3.params=
+comment3.target=void\ showAllCardsGraphically()
+comment3.text=\r\n\ uses\ TextWriter\ to\ display\ all\ the\ cards\ in\ the\ deck\ graphically\r\n
+comment4.params=
+comment4.target=void\ shuffle()
+comment4.text=\r\n\ resets\ all\ the\ Cards\ in\ the\ deck\ to\ a\ status\ of\ NOT\ yet\ used/dealt\r\n
+comment5.params=
+comment5.target=int\ getNumUnusedCards()
+comment5.text=\r\n\ returns\ how\ many\ cards\ have\ not\ yet\ been\ dealt/used\r\n
+comment6.params=
+comment6.target=Card\ deal()
+comment6.text=\r\n\ randomly\ return\ a\ Card\ from\ the\ deck\ that\ has\ not\ yet\ been\ dealt/used\r\n
+numComments=7

@@ -1,3 +1,4 @@
+
 public class GameBoard
 {
        private Box[] row=new Box[6];

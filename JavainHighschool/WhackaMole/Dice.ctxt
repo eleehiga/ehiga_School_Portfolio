@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Dice()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Dice\ assigns\ the\ dice\ a\ random\ value\ between\ 1-6\r\n
+comment1.params=n
+comment1.target=Dice(int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Dice\ assigns\ the\ dice\ a\ random\ value\ n\r\n\ @param\ n\ \ a\ value\ between\ 1\ and\ 6\ to\ be\ assigned\ to\ the\ dice\r\n
+comment2.params=
+comment2.target=int\ roll()
+comment2.text=\r\n\ randomly\ picks\ a\ number\ between\ 1\ and\ 6\ and\ sets\ the\ dice\ to\ represent\ that\ value\r\n
+comment3.params=
+comment3.target=int\ diceValue()
+comment3.text=\r\n\ returns\ the\ integer\ value\ of\ the\ dice\ \r\n
+comment4.params=
+comment4.target=java.lang.String\ diceFace()
+comment4.text=\r\n\ returns\ the\ value\ of\ the\ dice\ as\ a\ String\r\n
+comment5.params=args
+comment5.target=void\ main(java.lang.String[])
+numComments=6

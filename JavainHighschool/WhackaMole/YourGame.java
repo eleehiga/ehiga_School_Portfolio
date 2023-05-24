@@ -1,6 +1,8 @@
-import java.awt.event.*;
+import java.awt.event.*; 
 import javax.swing.*;
 import java.util.*;
+import javax.sound.*;
+import javax.sound.sampled.AudioInputStream;
 /**
  * Write a description of class CardGame here.
  * 
@@ -10,6 +12,9 @@ import java.util.*;
 
 public class YourGame extends GameClass   //inherits KeyListener and MouseListener from GameClass
 {
+	public AudioInputStream regularBattles = new AudioInputStream(URL "https://soundcloud.com/hingyan/kirby-planet-robobot-music-company-boss-battle-theme", Format );
+	
+	
     // inherits the following data members from GameClass that are accessible to you because they are protected
     //     protected int key = -1;                          // this variable is changed in keyPressed(KeyEvent e)
     //     protected boolean endOfGame = false;             // keeps the game looping and testing for keys pressed and mouse clicks until the user hits ESC
@@ -33,6 +38,7 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
     private double loops=0;
     private int megaLoops=0;
     private int level=1;
+    private boolean bossBeaten=false;
     private String yourName;
     YourGame ( )
     {
@@ -53,11 +59,7 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
     public void start()
     {
         //Multi Level
-        do
-        {
             princeMoleton.makeVisible();
-            if(level==1)
-            {
                 JOptionPane.showMessageDialog(null,"Wake up farmer.");
                 JOptionPane.showMessageDialog(null,"I said, WAKE UP FARMER!");
                 JOptionPane.showMessageDialog(null,"Whoa don't hurt me!\n And I won't hurt you!");
@@ -67,9 +69,11 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
                 
                 JOptionPane.showMessageDialog(null,"Good luck defending your broccili patch. :D");
                 princeMoleton.makeInvisible();
-            }
+        do
+        {
             if(level>1)
             {
+                princeMoleton.makeVisible();
                 JOptionPane.showMessageDialog(null," Good job!");
             }
             if(level==2)
@@ -96,6 +100,10 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
             {
                 JOptionPane.showMessageDialog(null,"The jetpack moles like to fly around a lot with their firework jetpack, be careful.");
             }
+            else if(level==7)
+            {
+                JOptionPane.showMessageDialog(null,"The dragon mole likes to breathe fire and set off bombs, be careful.");
+            }
                 princeMoleton.makeInvisible();
             //creates Moles
             gameBoard.makeVisible();
@@ -108,7 +116,7 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
                     moles[r][c].makeVisible();
                 }
             }
-            if(level==4)
+            if(level%4==0)
             {
                 moles[2][2].makeInvisible();
                 moles[2][2]=null;
@@ -163,16 +171,16 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
                     //If tapped Mouse will lose hP but if you tap a bomb you will lose hP
                     if ((mouseX>=0&&mouseX<760)&&(mouseY>=0&&mouseY<800))
                     {
-                        moles[mouseY/160][mouseX/160].subtractHp();
-                        if(bombs[mouseY/155][mouseX/155].bombVisible())
+                        moles[mouseY/160][mouseX/152].subtractHp();
+                        if(bombs[mouseY/160][mouseX/152].bombVisible())
                         {
                             yourHp=gameBoard.damageToYou();
                             points=points-100;
                         }
-                        else if(moles[mouseY/155][mouseX/155].isBlank()==true&&moles[mouseY/153][mouseX/153].isVisible()==false)
+                        else if(moles[mouseY/160][mouseX/152].isBlank()==true&&moles[mouseY/160][mouseX/153].isVisible()==false)
                         {
                             //Adds points
-                            points=points+(moles[mouseY/155][mouseX/155].getpValue());
+                            points=points+(moles[mouseY/160][mouseX/152].getpValue());
                         }
                     }
                     mouseAlreadyClicked=false;
@@ -221,8 +229,13 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
                         loops=0;
                         megaLoops++;
                     }
+                if(level%4==0&&moles[2][2].getHp()<=0)
+                {
+                    bossBeaten=true;
+                    megaLoops=0;
+                }
                 //Surviving the mole wave and passing two mega Loops wins the level
-                }while(!endOfGame&&yourHp>0&&megaLoops<=2&&megaLoops<=1);
+                }while(!endOfGame&&yourHp>0&&megaLoops<=2&&megaLoops<=1&&bossBeaten==false);
              if(yourHp>0)
              {
                 if(endOfGame==true)
@@ -230,12 +243,13 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
                 {
                     JOptionPane.showMessageDialog(null,"You restarted the level...");
                 }
-                else if(megaLoops>=1)
+                else if(megaLoops>=1||bossBeaten==true)
                 {
                     JOptionPane.showMessageDialog(null,"You won level "+level+" with "+points+" points!");
                     level++;
                     loops=0;
                     megaLoops=0;
+                    bossBeaten=false;
                     JOptionPane.showMessageDialog(null,"The next level shall begin");
                 }
               }
@@ -254,7 +268,7 @@ public class YourGame extends GameClass   //inherits KeyListener and MouseListen
             yourHp=gameBoard.resetHp();
             loops=0;
             megaLoops=0;
-            }while(level<=6);
+            }while(level<=7);
         // user needs to hit the ESC key to end the game
         JOptionPane.showMessageDialog(null,"Thanks "+yourName+", for playing Whack a Mole RPG by Ethan Higa! \n:D");
         System.out.println("ESC key was pressed to end the game");

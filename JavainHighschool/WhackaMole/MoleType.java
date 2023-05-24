@@ -206,8 +206,9 @@ public class MoleType
             }
         
             if(type==10)
+            //Dragon Mole
             {
-                
+                mFace.changeColor("red");
             }
         
             if(type==11)
@@ -274,6 +275,10 @@ public class MoleType
                 flamethrowerR=new Box(10,20,(x+40),(y+60));
                 flamethrowerR.changeColor("black");
             }
+        if(boss==2)
+        {
+            
+        }
     }
     
     public MoleType(boolean bomb,int x,int y)
@@ -472,10 +477,16 @@ public class MoleType
         return pValue;
     }
     
+    public int getHp()
+    {
+        return hP;
+    }
+    
     public String face()
     {
         return mFace.getX()+","+mFace.getY();
     }
+    
     
     
     public void moveHorizontal(int h)
